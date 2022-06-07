@@ -1061,6 +1061,8 @@ Throwable 是 Java 语言中所有错误或异常的超类。下一层分为 Err
 ### 数据结构
 
 ![JavaCollection](https://tva1.sinaimg.cn/large/008eGmZEly1goe17hajvzj316d0lhju3.jpg)
+![集合框架体系如图所示](https://www.runoob.com/wp-content/uploads/2014/01/java-coll-2020-11-16.png)
+参考：https://www.runoob.com/java/java-collections.html
 
 #### **1、ArrayList和LinkedList**
 
