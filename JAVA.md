@@ -1162,6 +1162,12 @@ for(Integer i:list){
 角度：数据结构+扩容情况+put查找的详细过程+哈希函数+容量为什么始终都是2^N，JDK1.7与1.8的区别。
 
 参考：https://www.jianshu.com/p/9fe4cb316c05
+	
+看似简单的hashCode和equals面试题，竟然有这么多坑！ ：https://zhuanlan.zhihu.com/p/58337357
+
+最通俗易懂搞定HashMap的底层原理：https://zhuanlan.zhihu.com/p/79507868
+
+
 
 **数据结构：**
 
