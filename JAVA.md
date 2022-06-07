@@ -1167,11 +1167,43 @@ for(Integer i:list){
 
 最通俗易懂搞定HashMap的底层原理：https://zhuanlan.zhihu.com/p/79507868
 
+Java hashCode() 和 equals()的若干问题解答：https://www.cnblogs.com/skywang12345/p/3324958.html
+	
+HashMap 1.7和1.8的区别 --答到面试官怀疑人生：https://blog.csdn.net/weixin_44141495/article/details/108402128
 
+**HashMap中的put方法**
+
+```JAVA
+public V put(K key, V value) {
+        if (key == null)
+            return putForNullKey(value);
+        int hash = hash(key.hashCode());
+        int i = indexFor(hash, table.length);
+        for (Entry<K,V> e = table[i]; e != null; e = e.next) {
+            Object k;
+            if (e.hash == hash && ((k = e.key) == key || key.equals(k))) {
+                V oldValue = e.value;
+                e.value = value;
+                e.recordAccess(this);
+                return oldValue;
+            }
+        }
+ 
+        modCount++;
+        addEntry(hash, key, value, i);
+        return null;
+    }
+```
+​		会先调用hashCode方法得到该元素的hashCode值
+	
+​		然后查看table中是否存在该hashCode值，如果存在则调用equals方法重新确定是否存在该元素，如果存在，则更新value值，否则将新的元素添加到HashMap中
+	
+**从这里可以看出，hashCode方法的存在是为了减少equals方法的调用次数，从而提高程序效率。**
 
 **数据结构：**
 
 ​		HashMap在底层数据结构上采用了数组＋链表＋红黑树，通过散列映射来存储键值对数据
+![HashMap的数据结构为 数组+(链表或红黑树)](https://pic3.zhimg.com/v2-894d2f03f6672c9b6a1ced07fe27e1be_r.jpg)
 
 **扩容情况：**
 
