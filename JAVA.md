@@ -1012,7 +1012,7 @@ class LRUCache {
 
  		1.类名.class(就是一份字节码)
  		2.Class.forName(String className);根据一个类的全限定名来构建Class对象
- 		3.每一个对象多有getClass()方法:obj.getClass();返回对象的真实类型
+ 		3.每一个对象都有getClass()方法:obj.getClass();返回对象的真实类型
 
 **使用场景：**
 
