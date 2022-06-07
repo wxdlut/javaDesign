@@ -1059,10 +1059,17 @@ Throwable 是 Java 语言中所有错误或异常的超类。下一层分为 Err
 
 
 ### 数据结构
-
-![JavaCollection](https://tva1.sinaimg.cn/large/008eGmZEly1goe17hajvzj316d0lhju3.jpg)
+	
+Java集合框架<br>
+![JavaCollection](https://tva1.sinaimg.cn/large/008eGmZEly1goe17hajvzj316d0lhju3.jpg) 
+<br>从上面的集合框架图可以看到，Java 集合框架主要包括两种类型的容器，一种是集合（Collection），存储一个元素集合，另一种是图（Map），存储键/值对映射。	
+<br>集合框架体系如图所示<br>
 ![集合框架体系如图所示](https://www.runoob.com/wp-content/uploads/2014/01/java-coll-2020-11-16.png)
-参考：https://www.runoob.com/java/java-collections.html
+<br>参考：https://www.runoob.com/java/java-collections.html
+<br>集合框架是一个用来代表和操纵集合的统一架构。所有的集合框架都包含如下内容：
+<br>接口：是代表集合的抽象数据类型。例如 Collection、List、Set、Map 等。之所以定义多个接口，是为了以不同的方式操作集合对象
+<br>实现（类）：是集合接口的具体实现。从本质上讲，它们是可重复使用的数据结构，例如：ArrayList、LinkedList、HashSet、HashMap。
+<br>算法：是实现集合接口的对象里的方法执行的一些有用的计算，例如：搜索和排序。这些算法被称为多态，那是因为相同的方法可以在相似的接口上有着不同的实现。
 
 #### **1、ArrayList和LinkedList**
 
