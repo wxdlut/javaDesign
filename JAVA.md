@@ -1140,6 +1140,103 @@ for(Integer i:list){
     if(i==3) list.remove(i);
 }
 ```
+	
+```java
+package collection;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+/**
+ * https://juejin.cn/post/6879291161274482695
+ * https://zhuanlan.zhihu.com/p/37476508
+ *
+ * 【强制】不要在 foreach 循环里进行元素的 remove/add 操作。remove 元素请使用 Iterator
+ * 方式，如果并发操作，需要对 Iterator 对象加锁。
+ *
+ *
+ * 反例：test1()没有异常，test2抛出java.util.ConcurrentModificationException
+ * 解释：
+ * （1）迭代器类里有这俩变量：
+ * int cursor;       // index of next element to return ：下一个要返回的变量的下标
+ * int lastRet = -1; // index of last element returned; -1 if no such  ：上一个返回过的变量的下标
+ *
+ * （2）调用list.remove的时候，--size了；
+ *      -- 即test1() remove("1")后，size变为1，而cursor也等于1，hasNext判断为false就已经退出循环了
+ *      -- 即test2() remove("2")后，size变为1，而cursor等于2，hasNext判断为true就已经退出循环了
+ *
+ * （3）hasNext：只有在下一个变量的下标不等于size的时候，集合还有下一个元素
+ *  public boolean hasNext() {
+ *       return cursor != size;
+ *  }
+ *
+ */
+public class FailFast {
+    public static void main(String[] args) {
+        test();
+        System.out.println("test finish, test1 start..");
+        test1();
+        System.out.println("test1 finish, test2 start..");
+        test2();  // 37行
+    }
+
+    /**
+     * 正例：
+     */
+    static void test() {
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("2");
+
+        Iterator<String> iterator = list.iterator();
+        while (iterator.hasNext()) {
+            String item = iterator.next();
+            if ("2".equals(item)) {
+                iterator.remove();
+            }
+        }
+    }
+
+    /**
+     * 反例1
+     */
+    static void test1() {
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("2");
+
+        for (String item : list) {
+            System.out.println("item=" + item);  // 未遍历到2，就已经退出循环了
+            if ("1".equals(item)) {
+                list.remove(item);
+            }
+        }
+    }
+
+    /**
+     * 反例2
+     */
+    static void test2() {
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("2");
+
+        /**
+         Exception in thread "main" java.util.ConcurrentModificationException
+         at java.util.ArrayList$Itr.checkForComodification(ArrayList.java:911)
+         at java.util.ArrayList$Itr.next(ArrayList.java:861)
+         at collection.FailFast.test2(FailFast.java:88)
+         at collection.FailFast.main(FailFast.java:37)
+         */
+        for (String item : list) {  // 88行：也是先调用迭代器 iterator.hasNext() 判断,再调用iterator.next()取下一个原始
+            if ("2".equals(item)) {
+                list.remove(item);
+            }
+        }
+    }
+}
+```
 
 **fail—fast：**快速失败
 
