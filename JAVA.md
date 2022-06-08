@@ -1229,7 +1229,7 @@ public class FailFast {
          at collection.FailFast.test2(FailFast.java:88)
          at collection.FailFast.main(FailFast.java:37)
          */
-        for (String item : list) {  // 88行：也是先调用迭代器 iterator.hasNext() 判断,再调用iterator.next()取下一个原始
+        for (String item : list) {  // 88行：也是先调用迭代器 iterator.hasNext() 判断,再调用iterator.next()取下一个元素
             if ("2".equals(item)) {
                 list.remove(item);
             }
