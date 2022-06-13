@@ -1075,13 +1075,17 @@ Java集合框架<br>
 <br>参考：https://www.runoob.com/java/java-collections.html
 <br>集合框架是一个用来代表和操纵集合的统一架构。
 
+![集合框架体系如图所示](https://cdn.nlark.com/yuque/0/2022/png/375412/1655096358537-65250ce6-2a48-41e9-a2ce-473ff550f60b.png)
+
 **所有的集合框架都包含如下内容：**：
 	
 ​		1.接口：是代表集合的抽象数据类型。例如 Collection、List、Set、Map 等。之所以定义多个接口，是为了以不同的方式操作集合对象
 	
 ​		2.实现（类）：是集合接口的具体实现。从本质上讲，它们是可重复使用的数据结构，例如：ArrayList、LinkedList、HashSet、HashMap。
 	
-​		3.算法：是实现集合接口的对象里的方法执行的一些有用的计算，例如：搜索和排序。这些算法被称为多态，那是因为相同的方法可以在相似的接口上有着不同的实现。
+​		3.算法Collections：是实现集合接口的对象里的方法执行的一些有用的计算，例如：搜索和排序。这些算法被称为多态，那是因为相同的方法可以在相似的接口上有着不同的实现。点赖个较口
+		（3.1）Comparable
+		（3.2）Comparator
 
 #### **1、ArrayList和LinkedList**
 
