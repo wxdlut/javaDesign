@@ -1083,9 +1083,7 @@ Java集合框架<br>
 	
 ​		2.实现（类）：是集合接口的具体实现。从本质上讲，它们是可重复使用的数据结构，例如：ArrayList、LinkedList、HashSet、HashMap。
 	
-​		3.算法Collections：是实现集合接口的对象里的方法执行的一些有用的计算，例如：搜索和排序。这些算法被称为多态，那是因为相同的方法可以在相似的接口上有着不同的实现。点赖个较口
-		（3.1）Comparable
-		（3.2）Comparator
+​		3.算法Collections：是实现集合接口的对象里的方法执行的一些有用的计算，例如：搜索和排序。这些算法被称为多态，那是因为相同的方法可以在相似的接口上有着不同的实现。依赖两个比较接口	（3.1）Comparable（3.2）Comparator
 
 #### **1、ArrayList和LinkedList**
 
